@@ -30,9 +30,12 @@
 # Task 1
 task_01 () {
 	# This program takes two numeric inputs(x and y) and searches the set of numbers inbetween x and y for the even triangular numbers
-	echo "${bold}${bg_blue}${smul}Task 1:${normal}"
-	read -p "	Give a non negative number: " input_1
-	read -p "	Give a second non negative number greater than the last: " input_2
+	echo "${fg_red}${bold}>>>	${fg_white}${bg_blue}${smul}Task 1:${normal}"
+	echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Give a non negative number: "
+	read -p "${fg_red}${bold}>>>	${normal}${fg_green}" input_1
+	echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Give a second non negative number greater than the last: "
+	read -p "${fg_red}${bold}>>>	${normal}${fg_green}" input_2
+	echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Processing..."
 
 	x=$[$input_1+1] # Variable that iterates through the set
 	eqTris=() # array for even triangular numbers
@@ -77,10 +80,20 @@ task_01 () {
 	# Prints each even triangular number
 	len=${#eqTris[@]}
 
-	for (( i=0; i<=$len; i++ ))
+	echo "${fg_red}${bold}>>>	${fg_green}Your set of Even Triangular numbers is:"
+	echo -n "		("
+
+	for (( i=0; i<=$[$len-1]; i++ ))
 	do
-		echo "		${fg_green}${bold}${eqTris[$i]}${normal}"
+		if [ $i -eq $[$len-1] ];
+		then
+			echo -n "${fg_green}${bold}${eqTris[$i]})${normal}"
+		else
+			echo -n "${fg_green}${bold}${eqTris[$i]}, ${normal}"
+		fi
 	done
+	echo
+	echo
 }
 
 # Task 2
@@ -106,24 +119,23 @@ menu_01 () {
 	echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}E.) Exit							${fg_yellow}${bold}|"
 	echo "${fg_yellow}${bold}|                                                                   			|"
 	echo "${fg_yellow}${bold}#=======================================================================================#"
-	echo 
-	
+	echo
+
 	# Selection loop
 	for (( ; ; ))
 	do
 		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-2], or the listed letters: "
 		# Creates a variable of the users choice
 		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_01
-		
+
 		# Task menu and relative instructions
 		case $ans_01 in
 			1|C|c) clear
 				menu_02;;
 			2|E|e) clear
-				echo "${fg_red}>>>	${fg_green}${fg_bold}Exiting Application"
+				echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Exiting Application"
 				exit 0;;
-			*) echo "${fg_red}${bold}>>>	${normal}${fg_green}Sorry ${bold}$ans_01${normal}${fg_green} is not an option"
-				echo "${fg_red}${bold}>>>";;
+			*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
 		esac
 	done
 }
@@ -133,7 +145,7 @@ menu_02 () {
 
 	# GUI of the menu
 	echo "${bg_blue}${fg_white}${smul}${bold}				 Group 59 - Final Project ${normal}"
-	echo "${fg_yellow}${bold}#=======================================================================================#"		
+	echo "${fg_yellow}${bold}#=======================================================================================#"
 		echo "${fg_yellow}${bold}|                                                                   			|"
 		echo "${fg_yellow}${bold}|		${fg_green}${smul}${bold}Tasks:${normal}${rmul}									${fg_yellow}${bold}|"
 		echo "${fg_yellow}${bold}|      		${fg_red}>>>                                                  			${fg_yellow}${bold}|"
@@ -144,18 +156,17 @@ menu_02 () {
 		echo "${fg_yellow}${bold}|                                                                   			|"
 		echo "${fg_yellow}${bold}#=======================================================================================#"
 		echo
-		
+
 	# Selection loop
 	for (( ; ; ))
 	do
 		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-4], or the listed letters: "
 		# Creates a variable of the users choice
 		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_02
-		
+
 		# Task menu and relative instructions
 		case $ans_02 in
-			1|T|t) clear
-				task_01;;
+			1|T|t) task_01;;
 			2|P|p) clear
 				task_02;;
 			3|Q|q) clear
@@ -163,8 +174,7 @@ menu_02 () {
 			4|E|e) clear
 				echo "${fg_red}${bold}>>>	${normal}${fg_green}${fg_bold}Exiting Application"
 				exit 0;;
-			*) echo "${fg_red}${bold}>>>	${normal}${fg_green}Sorry ${bold}$ans_02${normal}${fg_green} is not an option"
-				echo "${fg_red}${bold}>>>";;
+			*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
 		esac
 	done
 }
