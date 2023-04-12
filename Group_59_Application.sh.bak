@@ -93,10 +93,9 @@ task_01 () {
 
 #}
 
-# Function to allow easy calling of the launch menu
-menu_01 () {
+# Menu 1
 
-	# GUI of the menu
+menu_01 () {
 	echo "${bg_blue}${smul}${bold}				 Group 59 - Final Project ${normal}"
 	echo "${fg_yellow}${bold}#=======================================================================================#"
 	echo "${fg_yellow}${bold}|                                                                   			|"
@@ -107,15 +106,11 @@ menu_01 () {
 	echo "${fg_yellow}${bold}|                                                                   			|"
 	echo "${fg_yellow}${bold}#=======================================================================================#"
 	echo 
-	
-	# Selection loop
 	for (( ; ; ))
 	do
 		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-2], or the listed letters: "
-		# Creates a variable of the users choice
 		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_01
-		
-		# Task menu and relative instructions
+
 		case $ans_01 in
 			1|C|c) clear
 				menu_02;;
@@ -128,10 +123,10 @@ menu_01 () {
 	done
 }
 
-# Function to allow easy calling of the task menu
-menu_02 () {
+# Menu 2
 
-	# GUI of the menu
+
+menu_02 () {
 	echo "${bg_blue}${fg_white}${smul}${bold}				 Group 59 - Final Project ${normal}"
 	echo "${fg_yellow}${bold}#=======================================================================================#"		
 		echo "${fg_yellow}${bold}|                                                                   			|"
@@ -144,15 +139,12 @@ menu_02 () {
 		echo "${fg_yellow}${bold}|                                                                   			|"
 		echo "${fg_yellow}${bold}#=======================================================================================#"
 		echo
-		
-	# Selection loop
 	for (( ; ; ))
 	do
-		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-4], or the listed letters: "
-		# Creates a variable of the users choice
-		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_02
 		
-		# Task menu and relative instructions
+		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-4], or the listed letters: "
+		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_02
+
 		case $ans_02 in
 			1|T|t) clear
 				task_01;;
