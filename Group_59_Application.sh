@@ -30,16 +30,20 @@
 # Task 1
 task_01 () {
 	# This program takes two numeric inputs(x and y) and searches the set of numbers inbetween x and y for the even triangular numbers
-	echo "${fg_red}${bold}>>>	${fg_white}${bg_blue}${smul}Task 1:${normal}"
-	echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Give a non negative number: "
-	read -p "${fg_red}${bold}>>>	${normal}${fg_green}" input_1
-	echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Give a second non negative number greater than the last: "
-	read -p "${fg_red}${bold}>>>	${normal}${fg_green}" input_2
-	echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Processing..."
 
-	x=$[$input_1+1] # Variable that iterates through the set
-	eqTris=() # array for even triangular numbers
-	y=0 # variable used for finding the perfect square
+	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 1:${normal}"
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
+
+	# Variable that iterates through the set
+	x=$[$input_1+1]
+	# Array for even triangular numbers
+	eqTris=()
+	# Variable used for finding the perfect square
+	y=0
 
 	# While x is within the given set.
 	while [ $input_1 -lt $x ] && [ $x -lt $input_2 ]
@@ -77,19 +81,20 @@ task_01 () {
 		fi
 	done
 
-	# Prints each even triangular number
+	# len = number of even triangular numbers
 	len=${#eqTris[@]}
 
-	echo "${fg_red}${bold}>>>	${fg_green}Your set of Even Triangular numbers is:"
-	echo -n "		("
-
+	echo "${fg_red}${bold}   	   |- ${fg_green}Your set, ($input_1-$input_2), of Even Triangular numbers is:"
+	echo -n "${fg_red}${bold}   	   |-  ${smul}${fg_green}("
+	# Loops through the set of even triangular numbers, and, prints each even triangular number
 	for (( i=0; i<=$[$len-1]; i++ ))
 	do
+		# Checks if eqTris[i] is the final value in the list if so closing brackets are printed
 		if [ $i -eq $[$len-1] ];
 		then
-			echo -n "${fg_green}${bold}${eqTris[$i]})${normal}"
+			echo -n "${smul}${fg_green}${bold}${eqTris[$i]})${normal}"
 		else
-			echo -n "${fg_green}${bold}${eqTris[$i]}, ${normal}"
+			echo -n "${smul}${fg_green}${bold}${eqTris[$i]}, ${normal}"
 		fi
 	done
 	echo
@@ -128,7 +133,7 @@ menu_01 () {
 		# Creates a variable of the users choice
 		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_01
 
-		# Task menu and relative instructions
+		# Launch menu
 		case $ans_01 in
 			1|C|c) clear
 				menu_02;;
