@@ -26,7 +26,6 @@
 	fg_white=$(tput setaf 9)
 
 
-
 # Task 1
 task_01 () {
 	# This program takes two numeric inputs(x and y) and searches the set of numbers inbetween x and y for the even triangular numbers
@@ -37,14 +36,14 @@ task_01 () {
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
 	
 	char=[0-9]
-	# Checks if input_1 is valid  or $input_1 < 0
+	# Checks if input_1 is a valid input or if input_1 < 0
 	while ! [[ $input_1 =~ $char ]] || [ $input_1 -lt 0 ]
 	do
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_1${rmul} is not a valid input."
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
 			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
 	done
-	
+
 	# input_2
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
@@ -124,12 +123,15 @@ task_01 () {
 
 # Task 2
 task_02 () {
-	echo "How many numbers do you want to find?"
-	read number_1
-	echo "Enter a number to check for multiple:"
-	read number_2
+	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 2:${normal}"
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}How many numbers do you want to find?"
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Enter a number to check for multiple:"
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
 	number_found=0
 	
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
+
 	for((i=2;number_found<number_1; i+=2 ));
 	do
 		product=$((i*(i+2)))
@@ -137,13 +139,15 @@ task_02 () {
 		then
 			if((product % number_2 ==0));
 			then
-				echo "$product is a multiple of $number_2"
+				echo "${fg_red}${bold}   	   |-  ${fg_green}${smul}$product${rmul} is a multiple of ${smul}$number_2${rmul}"
 			else
-				echo "$product is not a multiple of $number_2"
+				echo "${fg_red}${bold}   	   |-  ${fg_green}${smul}$product${rmul} is not a multiple of ${smul}$number_2${rmul}"
 			fi
 			((number_found++))
 		fi
 	done
+	echo
+	echo
 }
 
 # Task 3
