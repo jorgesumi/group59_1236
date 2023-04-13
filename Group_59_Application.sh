@@ -30,12 +30,33 @@
 # Task 1
 task_01 () {
 	# This program takes two numeric inputs(x and y) and searches the set of numbers inbetween x and y for the even triangular numbers
-
+	
+	# input_1
 	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 1:${normal}"
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
+	
+	char=[0-9]
+	# Checks if input_1 is valid  or $input_1 < 0
+	while ! [[ $input_1 =~ $char ]] || [ $input_1 -lt 0 ]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_1${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
+	done
+	
+	# input_2
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
+	
+	# Checks if input_2 is valid
+	while ! [[ $input_2 =~ $char ]] || [ $input_2 -lt $input_1 ]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_2${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
+	done
+	
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
 
 	# Variable that iterates through the set
@@ -102,51 +123,37 @@ task_01 () {
 }
 
 # Task 2
-#task_02 () {
-
-#}
+task_02 () {
+	echo "How many numbers do you want to find?"
+	read number_1
+	echo "Enter a number to check for multiple:"
+	read number_2
+	number_found=0
+	
+	for((i=2;number_found<number_1; i+=2 ));
+	do
+		product=$((i*(i+2)))
+		if((product % 2==0));
+		then
+			if((product % number_2 ==0));
+			then
+				echo "$product is a multiple of $number_2"
+			else
+				echo "$product is not a multiple of $number_2"
+			fi
+			((number_found++))
+		fi
+	done
+}
 
 # Task 3
 #task_03 () {
 
 #}
 
-# Function to allow easy calling of the launch menu
-menu_01 () {
-
-	# GUI of the menu
-	echo "${bg_blue}${smul}${bold}				 Group 59 - Final Project ${normal}"
-	echo "${fg_yellow}${bold}#=======================================================================================#"
-	echo "${fg_yellow}${bold}|                                                                   			|"
-	echo "${fg_yellow}${bold}|		${fg_green}${smul}${bold}Welcome to our application, please select an option:${rmul}			${fg_yellow}|"
-	echo "${fg_yellow}${bold}|      		${fg_red}>>>                                                  			${fg_yellow}${bold}|"
-	echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}C.) Continue with the application				${fg_yellow}${bold}|"
-	echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}E.) Exit							${fg_yellow}${bold}|"
-	echo "${fg_yellow}${bold}|                                                                   			|"
-	echo "${fg_yellow}${bold}#=======================================================================================#"
-	echo
-
-	# Selection loop
-	for (( ; ; ))
-	do
-		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-2], or the listed letters: "
-		# Creates a variable of the users choice
-		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_01
-
-		# Launch menu
-		case $ans_01 in
-			1|C|c) clear
-				menu_02;;
-			2|E|e) clear
-				echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Exiting Application"
-				exit 0;;
-			*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
-		esac
-	done
-}
 
 # Function to allow easy calling of the task menu
-menu_02 () {
+tMenu () {
 
 	# GUI of the menu
 	echo "${bg_blue}${fg_white}${smul}${bold}				 Group 59 - Final Project ${normal}"
@@ -167,13 +174,12 @@ menu_02 () {
 	do
 		echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-4], or the listed letters: "
 		# Creates a variable of the users choice
-		read -p "${fg_red}${bold}>>>	${normal}${fg_green}" ans_02
+		read -p "${fg_red}${bold}>>>	${normal}${fg_green} " ans_02
 
 		# Task menu and relative instructions
 		case $ans_02 in
 			1|T|t) task_01;;
-			2|P|p) clear
-				task_02;;
+			2|P|p) task_02;;
 			3|Q|q) clear
 				task_03;;
 			4|E|e) clear
@@ -187,5 +193,33 @@ menu_02 () {
 
 
 clear
+# GUI of the menu
+echo "${bg_blue}${smul}${bold}				 Group 59 - Final Project ${normal}"
+echo "${fg_yellow}${bold}#=======================================================================================#"
+echo "${fg_yellow}${bold}|                                                                   			|"
+echo "${fg_yellow}${bold}|		${fg_green}${smul}${bold}Welcome to our application, please select an option:${rmul}			${fg_yellow}|"
+echo "${fg_yellow}${bold}|      		${fg_red}>>>                                                  			${fg_yellow}${bold}|"
+echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}C.) Continue with the application				${fg_yellow}${bold}|"
+echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}E.) Exit							${fg_yellow}${bold}|"
+echo "${fg_yellow}${bold}|                                                                   			|"
+echo "${fg_yellow}${bold}#=======================================================================================#"
+echo
 
-menu_01
+# Selection loop
+for (( ; ; ))
+do
+	echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-2], or the listed letters: "
+	# Creates a variable of the users choice
+	read -p "${fg_red}${bold}>>>	${normal}${fg_green} " ans_01
+
+	# Launch menu
+	case $ans_01 in
+		1|C|c) clear
+			tMenu;;
+		2|E|e) clear
+			echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Exiting Application"
+			exit 0;;
+		*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
+	esac
+done
+
