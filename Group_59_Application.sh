@@ -24,18 +24,19 @@
 	fg_green=$(tput setaf 2)
 	fg_yellow=$(tput setaf 3)
 	fg_white=$(tput setaf 9)
-
+# -char limit:
+	char=[0-9]
 
 # Task 1
 task_01 () {
 	# This program takes two numeric inputs(x and y) and searches the set of numbers inbetween x and y for the even triangular numbers
+	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 1:${normal}"
 	
 	# input_1
-	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 1:${normal}"
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
 	
-	char=[0-9]
+	
 	# Checks if input_1 is a valid input or if input_1 < 0
 	while ! [[ $input_1 =~ $char ]] || [ $input_1 -lt 0 ]
 	do
@@ -124,14 +125,34 @@ task_01 () {
 # Task 2
 task_02 () {
 	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 2:${normal}"
+	# Number of outputs
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}How many numbers do you want to find?"
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
+	
+	# Checks if number_1 is a valid number
+	while ! [[ $number_1 =~ $char ]] || [ $number_1 -lt 0 ]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$number_1${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
+	done
+	
+	# Base multiple
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Enter a number to check for multiple:"
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
+	
+	# Checks if number_2 is a valid number
+	while ! [[ $number_2 =~ $char ]] || [ $number_2 -lt 0 ]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$number_2${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
+	done
 	number_found=0
 	
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
-
+	
+	# Prints the results
 	for((i=2;number_found<number_1; i+=2 ));
 	do
 		product=$((i*(i+2)))
@@ -151,9 +172,46 @@ task_02 () {
 }
 
 # Task 3
-#task_03 () {
-
-#}
+task_03 () {
+	# This program finds the terms of the function 'an^2 + bn + c' and returns one of two different answers based off the users choice
+	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 3:${normal}"
+	
+	# Sets a variable
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" a
+	
+	# Checks if a is a number
+	while ! [[ $a =~ $char ]]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$a${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" a
+	done
+	
+	# Sets b variable
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give another number: "
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" b
+	
+	# Checks if b is a number
+	while ! [[ $b =~ $char ]]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$b${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" b
+	done
+	
+	# Sets c variable
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give another, another number: "
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" c
+	
+	# Checks if c is a number
+	while ! [[ $c =~ $char ]]
+	do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$c${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" c
+	done
+}
 
 
 # Function to allow easy calling of the task menu
@@ -184,8 +242,7 @@ tMenu () {
 		case $ans_02 in
 			1|T|t) task_01;;
 			2|P|p) task_02;;
-			3|Q|q) clear
-				task_03;;
+			3|Q|q) task_03;;
 			4|E|e) clear
 				echo "${fg_red}${bold}>>>	${normal}${fg_green}${fg_bold}Exiting Application"
 				exit 0;;
