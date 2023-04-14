@@ -50,7 +50,7 @@ task_01 () {
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
 	
 	# Checks if input_2 is valid
-	while ! [[ $input_2 =~ $char ]] || [ $input_2 -lt $input_1 ]
+	while ! [[ $input_2 =~ $char ]] || [ $input_2 -le $input_1 ]
 	do
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_2${rmul} is not a valid input."
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
@@ -106,18 +106,8 @@ task_01 () {
 	len=${#eqTris[@]}
 
 	echo "${fg_red}${bold}   	   |- ${fg_green}Your set, ($input_1-$input_2), of Even Triangular numbers is:"
-	echo -n "${fg_red}${bold}   	   |-  ${smul}${fg_green}("
-	# Loops through the set of even triangular numbers, and, prints each even triangular number
-	for (( i=0; i<=$[$len-1]; i++ ))
-	do
-		# Checks if eqTris[i] is the final value in the list if so closing brackets are printed
-		if [ $i -eq $[$len-1] ];
-		then
-			echo -n "${smul}${fg_green}${bold}${eqTris[$i]})${normal}"
-		else
-			echo -n "${smul}${fg_green}${bold}${eqTris[$i]}, ${normal}"
-		fi
-	done
+	echo -n "${fg_red}${bold}   	   |-  ${smul}${fg_green}${smul}(${eqTris[*]})${rmul}"
+	
 	echo
 	echo
 }
@@ -176,6 +166,8 @@ task_03 () {
 	# This program finds the terms of the function 'an^2 + bn + c' and returns one of two different answers based off the users choice
 	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 3:${normal}"
 	
+	# Variables
+	n=1
 	# Sets a variable
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" a
@@ -210,6 +202,36 @@ task_03 () {
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$c${rmul} is not a valid input."
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
 			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" c
+	done
+	terms=()
+	
+	for (( ; ; )) 
+	do
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Select an option using [1-2], or the listed letters: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" opt
+		case $opt in
+			1) echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a positive number: "
+				read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" limit
+				
+				# Checks if limit is a valid input
+				while ! [[ $limit =~ $char ]] || [ $limit -le 0 ]
+				do
+					echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$limit${rmul} is not a valid input."
+					echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a positive number: "
+					read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" limit
+				done
+				echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
+				while [ $n -le $limit ] 
+				do
+					terms+=($[$a*($n*$n)+$b*$n+$c])
+					n=$[$n+1]
+				done
+				echo "${fg_red}${bold}   	   |- ${fg_green}The first $limit terms are: "
+				echo "${fg_red}${bold}   	   |-  ${smul}${fg_green}(${terms[*]})${rmul}"
+				;;
+			#2)
+			*) echo "${fg_red}${bold}   	   |- ${fg_green}Sorry ${smul}$opt${rmul}${fg_green} is not an option";;
+		esac
 	done
 }
 
