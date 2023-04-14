@@ -102,9 +102,6 @@ task_01 () {
 		fi
 	done
 
-	# len = number of even triangular numbers
-	len=${#eqTris[@]}
-
 	echo "${fg_red}${bold}   	   |- ${fg_green}Your set, ($input_1-$input_2), of Even Triangular numbers is:"
 	echo -n "${fg_red}${bold}   	   |-  ${smul}${fg_green}${smul}(${eqTris[*]})${rmul}"
 	
@@ -115,8 +112,9 @@ task_01 () {
 # Task 2
 task_02 () {
 	echo "${fg_red}${bold}>>>	${fg_yellow}${bg_red}${smul}Task 2:${normal}"
-	# Number of outputs
+	# This line print message to user to enter input of number 
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}How many numbers do you want to find?"
+	# This line store input of user
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
 	
 	# Checks if number_1 is a valid number
@@ -127,8 +125,9 @@ task_02 () {
 			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
 	done
 	
-	# Base multiple
+	# This line print message to user to input to find multiple 
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Enter a number to check for multiple:"
+	# This line store value of user input to check multiple
 	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
 	
 	# Checks if number_2 is a valid number
@@ -138,24 +137,34 @@ task_02 () {
 			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
 			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
 	done
+	# This line track how many numbers want to check
 	number_found=0
 	
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
 	
-	# Prints the results
+	# This line keep loop unless number_found is equal to number_1,
+	# I initialized variable to 2 and increment by 2
 	for((i=2;number_found<number_1; i+=2 ));
 	do
+		# This line do product of i and i+2, and store in $product
 		product=$((i*(i+2)))
+		# This line check product is even or not, then it initialized if statement
 		if((product % 2==0));
 		then
+			# This line check product is multiple  of number_2
 			if((product % number_2 ==0));
 			then
+				# This line print product is multiple of number_2
 				echo "${fg_red}${bold}   	   |-  ${fg_green}${smul}$product${rmul} is a multiple of ${smul}$number_2${rmul}"
 			else
+				# This line print product is not multipleof number_2
 				echo "${fg_red}${bold}   	   |-  ${fg_green}${smul}$product${rmul} is not a multiple of ${smul}$number_2${rmul}"
 			fi
+			# This line increment number_found variable by 1
 			((number_found++))
+		# This line end the inner if statement
 		fi
+	# This line end the for loop
 	done
 	echo
 	echo
@@ -305,4 +314,3 @@ do
 		*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
 	esac
 done
-
