@@ -3,8 +3,7 @@
 # 	Group 59 - Final Project
 #	Members:
 #	     - Jorge Sumi, 101406039
-#	     - Deep Gajjar, student number
-#	     - Shubh Vipulkumar Patel, student number
+#	     - Deep Gajjar
 
 
 
@@ -24,7 +23,10 @@
 	fg_green=$(tput setaf 2)
 	fg_yellow=$(tput setaf 3)
 	fg_white=$(tput setaf 9)
-# -char limit:
+
+# Name:
+	name=""
+# Char limit:
 	char=[0-9]
 
 # Task 1
@@ -40,9 +42,9 @@ task_01 () {
 	# Checks if input_1 is a valid input or if input_1 < 0
 	while ! [[ $input_1 =~ $char ]] || [ $input_1 -lt 0 ]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_1${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_1${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_1
 	done
 
 	# input_2
@@ -52,9 +54,9 @@ task_01 () {
 	# Checks if input_2 is valid
 	while ! [[ $input_2 =~ $char ]] || [ $input_2 -le $input_1 ]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_2${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$input_2${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a second non negative number greater than the last: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" input_2
 	done
 	
 	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
@@ -120,9 +122,9 @@ task_02 () {
 	# Checks if number_1 is a valid number
 	while ! [[ $number_1 =~ $char ]] || [ $number_1 -lt 0 ]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$number_1${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$number_1${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_1
 	done
 	
 	# This line print message to user to input to find multiple 
@@ -133,9 +135,9 @@ task_02 () {
 	# Checks if number_2 is a valid number
 	while ! [[ $number_2 =~ $char ]] || [ $number_2 -lt 0 ]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$number_2${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$number_2${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a non negative number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" number_2
 	done
 	# This line track how many numbers want to check
 	number_found=0
@@ -184,9 +186,9 @@ task_03 () {
 	# Checks if a is a number
 	while ! [[ $a =~ $char ]]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$a${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" a
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$a${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" a
 	done
 	
 	# Sets b variable
@@ -196,9 +198,9 @@ task_03 () {
 	# Checks if b is a number
 	while ! [[ $b =~ $char ]]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$b${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" b
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$b${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" b
 	done
 	
 	# Sets c variable
@@ -208,43 +210,103 @@ task_03 () {
 	# Checks if c is a number
 	while ! [[ $c =~ $char ]]
 	do
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$c${rmul} is not a valid input."
-			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
-			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" c
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$c${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" c
 	done
 	terms=()
 	
-	for (( ; ; )) 
+	echo "${fg_red}${bold}   	   |- ${fg_green}Your function is ${smul}${a}n^2 + ${b}n + $c${rmul}"
+	echo "${fg_red}${bold}   	   |- ${fg_green}Do you want to:"
+	echo "${fg_red}${bold}   	   |- ${fg_green}1) Find x amount of terms in your function"
+	echo "${fg_red}${bold}   	   |- ${fg_green}or"
+	echo "${fg_red}${bold}   	   |- ${fg_green}2) Find the nth term and check if its a factor of a number of your choosing"
+	echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Select an option using [1-2]: "
+	read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" opt
+
+	# Checks if opt is a valid input
+	while ! [[ $opt =~ [1-2] ]] 
 	do
-		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Select an option using [1-2], or the listed letters: "
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$opt${rmul} is not a valid input."
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Select an option using [1-2]: "
 		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" opt
-		case $opt in
-			1) echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a positive number: "
-				read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" limit
-				
-				# Checks if limit is a valid input
-				while ! [[ $limit =~ $char ]] || [ $limit -le 0 ]
-				do
-					echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$limit${rmul} is not a valid input."
-					echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a positive number: "
-					read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" limit
-				done
-				echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
-				while [ $n -le $limit ] 
-				do
-					terms+=($[$a*($n*$n)+$b*$n+$c])
-					n=$[$n+1]
-				done
-				echo "${fg_red}${bold}   	   |- ${fg_green}The first $limit terms are: "
-				echo "${fg_red}${bold}   	   |-  ${smul}${fg_green}(${terms[*]})${rmul}"
-				;;
-			#2)
-			*) echo "${fg_red}${bold}   	   |- ${fg_green}Sorry ${smul}$opt${rmul}${fg_green} is not an option";;
+	done
+	
+	
+	if [ $opt == 1 ]
+	# Option 1
+	then
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a positive number: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" limit
+		
+		# Checks if limit is a valid input
+		while ! [[ $limit =~ $char ]] || [ $limit -le 0 ]
+		do
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}${smul}$limit${rmul} is not a valid input."
+			echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Give a positive number: "
+			read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" limit
+		done
+		echo "${fg_red}${bold}   	   |- ${fg_green}${fg_bold}Processing..."
+		while [ $n -le $limit ] 
+		do
+			terms+=($[$a*($n*$n)+$b*$n+$c])
+			n=$[$n+1]
+		done
+		echo "${fg_red}${bold}   	   |- ${fg_green}The first $limit terms are: "
+		echo "${fg_red}${bold}   	   |-  ${smul}${fg_green}(${terms[*]})${rmul}"
+	
+	# Option 2
+	else
+		echo "${fg_red}${bold}   	   |- ${fg_green}What term do you want to find: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" n
+		t3_ans=$[$a*($n*$n) + $b*$n + $c]
+		echo "${fg_red}${bold}   	   |- ${fg_green}Enter a number to check if the ${n}th term is a factor of it: "
+		read -p "${fg_red}${bold}   	   |   ${normal}${fg_green}" factor
+		
+		if [ $[$factor % $t3_ans] -eq 0 ]
+		then
+			echo "${fg_red}${bold}   	   |- ${fg_green}The ${n}th term is ${smul}$t3_ans${rmul}. This term is a factor of $factor"
+		else
+			echo "${fg_red}${bold}   	   |- ${fg_green}The ${n}th term is ${smul}$t3_ans${rmul}. This term is not a factor of $factor"
+		fi
+	fi
+	echo
+	echo
+}
+
+# Function to allow easy calling of the launch menu
+lmenu () {
+	# GUI of the menu
+	echo "${bg_blue}${smul}${bold}				 Group 59 - Final Project ${normal}"
+	echo "${fg_yellow}${bold}#=======================================================================================#"
+	echo "${fg_yellow}${bold}|                                                                   			|"
+	echo "${fg_yellow}${bold}|		${fg_green}${smul}${bold}Welcome to our application, please select an option:${rmul}			${fg_yellow}|"
+	echo "${fg_yellow}${bold}|      		${fg_red}>>>                                                  			${fg_yellow}${bold}|"
+	echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}C.) Continue with the application				${fg_yellow}${bold}|"
+	echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}E.) Exit							${fg_yellow}${bold}|"
+	echo "${fg_yellow}${bold}|                                                                   			|"
+	echo "${fg_yellow}${bold}#=======================================================================================#"
+	echo
+
+	echo "${fg_red}${bold}>>>	${fg_green}Welcome to our project ${name}!"
+	# Selection loop
+	for (( ; ; ))
+	do
+		echo "${fg_red}${bold}>>>	${fg_green}Please select an option using [1-2], or the listed letters: "
+		# Creates a variable of the users choice
+		read -p "${fg_red}${bold}>>>	${normal}${fg_green} " ans_01
+
+		# Launch menu
+		case $ans_01 in
+			1|C|c) clear
+				tMenu;;
+			2|E|e) clear
+				echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Exiting Application"
+				exit 0;;
+			*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
 		esac
 	done
 }
-
-
 # Function to allow easy calling of the task menu
 tMenu () {
 
@@ -285,32 +347,7 @@ tMenu () {
 
 
 clear
-# GUI of the menu
-echo "${bg_blue}${smul}${bold}				 Group 59 - Final Project ${normal}"
-echo "${fg_yellow}${bold}#=======================================================================================#"
-echo "${fg_yellow}${bold}|                                                                   			|"
-echo "${fg_yellow}${bold}|		${fg_green}${smul}${bold}Welcome to our application, please select an option:${rmul}			${fg_yellow}|"
-echo "${fg_yellow}${bold}|      		${fg_red}>>>                                                  			${fg_yellow}${bold}|"
-echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}C.) Continue with the application				${fg_yellow}${bold}|"
-echo "${fg_yellow}${bold}|		${fg_red}>>>	${normal}${fg_green}E.) Exit							${fg_yellow}${bold}|"
-echo "${fg_yellow}${bold}|                                                                   			|"
-echo "${fg_yellow}${bold}#=======================================================================================#"
-echo
-
-# Selection loop
-for (( ; ; ))
-do
-	echo "${fg_red}${bold}>>>	${fg_green}Select an option using [1-2], or the listed letters: "
-	# Creates a variable of the users choice
-	read -p "${fg_red}${bold}>>>	${normal}${fg_green} " ans_01
-
-	# Launch menu
-	case $ans_01 in
-		1|C|c) clear
-			tMenu;;
-		2|E|e) clear
-			echo "${fg_red}${bold}>>>	${fg_green}${fg_bold}Exiting Application"
-			exit 0;;
-		*) echo "${fg_red}${bold}>>>	${fg_green}Sorry ${smul}$ans_01${rmul}${fg_green} is not an option";;
-	esac
-done
+echo "Welcome! What is your name?"
+read -p "" name
+clear
+lmenu
